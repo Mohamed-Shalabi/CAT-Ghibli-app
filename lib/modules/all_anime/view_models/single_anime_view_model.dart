@@ -1,3 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:state_management_session_two/models/anime_model.dart';
 
-class SingleAnimeViewModel with ChangeNotifier {}
+class SingleAnimeViewModel {
+  SingleAnimeViewModel();
+}
