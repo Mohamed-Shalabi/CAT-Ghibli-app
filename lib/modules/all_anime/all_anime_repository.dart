@@ -13,7 +13,9 @@ class AllAnimeRepository {
       final response = await AllAnimeService.fetchAllAnime();
       if (response.statusCode == 200) {
         final result = json.decode(response.body);
-        final animeModels = AnimeModel.parseList(result);
+        final animeModels = AnimeModel.parseList(
+          result.cast<Map<String, dynamic>>(),
+        );
 
         return ResponseModel(
           statusCode: response.statusCode,
