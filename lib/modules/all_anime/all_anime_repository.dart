@@ -22,7 +22,10 @@ class AllAnimeRepository {
           data: animeModels,
         );
       } else {
-        return ResponseModel(statusCode: -1);
+        return ResponseModel(
+          statusCode: -1,
+          message: 'An error occurred',
+        );
       }
     } catch (e) {
       if (e is SocketException) {
