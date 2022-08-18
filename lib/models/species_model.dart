@@ -1,12 +1,12 @@
 class SpeciesModel {
-  final String id, name, classification, eyeColor, hairColor;
+  final String id, name, classification, eyeColors, hairColors;
 
   SpeciesModel.fromMap(Map<String, dynamic> map)
       : id = map['id'] ?? '',
         name = map['name'] ?? '',
         classification = map['classification'] ?? '',
-        eyeColor = map['eye_color'] ?? '',
-        hairColor = map['hair_color'] ?? '';
+        eyeColors = map['eye_colors'] ?? '',
+        hairColors = map['hair_colors'] ?? '';
 
   static parseList(List<Map<String, dynamic>> mappedList) {
     final list = <SpeciesModel>[];
