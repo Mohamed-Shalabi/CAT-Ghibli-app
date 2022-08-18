@@ -22,23 +22,14 @@ class AllAnimeRepository {
           data: animeModels,
         );
       } else {
-        return ResponseModel(
-          statusCode: -1,
-          message: 'An error occurred',
-        );
+        return ResponseModel.error();
       }
     } catch (e) {
       if (e is SocketException) {
-        return ResponseModel(
-          statusCode: -1,
-          message: 'Check your internet connection',
-        );
+        return ResponseModel.networkError();
       }
 
-      return ResponseModel(
-        statusCode: -1,
-        message: 'An error occurred',
-      );
+      return ResponseModel.error();
     }
   }
 }

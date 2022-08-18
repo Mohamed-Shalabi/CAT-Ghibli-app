@@ -25,7 +25,7 @@ class AnimeModel {
         runningTime = map['running_time'] ?? '',
         rtScore = map['rt_score'] ?? '',
         people = (map['people'] ?? []).cast<String>(),
-        species = (map['people'] ?? []).cast<String>(),
+        species = (map['species'] ?? []).cast<String>(),
         locations = (map['locations'] ?? []).cast<String>(),
         vehicles = (map['vehicles'] ?? []).cast<String>();
 

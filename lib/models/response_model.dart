@@ -8,4 +8,14 @@ class ResponseModel<T> {
     this.data,
     this.message = '',
   });
+
+  ResponseModel.error()
+      : statusCode = -1,
+        message = 'An error occurred',
+        data = null;
+
+  ResponseModel.networkError()
+      : statusCode = -1,
+        message = 'Check your internet connection',
+        data = null;
 }
