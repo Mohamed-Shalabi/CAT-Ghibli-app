@@ -17,28 +17,16 @@ class AllAnimeRepository {
           result.cast<Map<String, dynamic>>(),
         );
 
-        return ResponseModel(
-          statusCode: response.statusCode,
-          data: animeModels,
-        );
+        return ResponseModel.success(data: animeModels);
       } else {
-        return ResponseModel(
-          statusCode: -1,
-          message: 'An error occurred',
-        );
+        return ResponseModel.unknownError();
       }
     } catch (e) {
       if (e is SocketException) {
-        return ResponseModel(
-          statusCode: -1,
-          message: 'Check your internet connection',
-        );
+        return ResponseModel.networkError();
       }
 
-      return ResponseModel(
-        statusCode: -1,
-        message: 'An error occurred',
-      );
+      return ResponseModel.unknownError();
     }
   }
 }
