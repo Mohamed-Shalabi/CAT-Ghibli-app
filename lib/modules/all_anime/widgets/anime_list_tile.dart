@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:state_management_session_two/global/functions/global_functions.dart';
+import 'package:state_management_session_two/global/functions/navigate.dart';
 import 'package:state_management_session_two/global/widgets/MyNetworkImage.dart';
 import 'package:state_management_session_two/global/widgets/my_divider.dart';
 import 'package:state_management_session_two/models/anime_model.dart';
@@ -42,7 +42,7 @@ class AnimeListTile extends StatelessWidget {
               '${anime.title}\n${anime.japaneseTitle}',
               textAlign: TextAlign.center,
               style:
-              const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
             const MyDivider(),
             Padding(

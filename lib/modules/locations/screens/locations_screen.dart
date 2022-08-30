@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:state_management_session_two/global/functions/global_functions.dart';
+import 'package:state_management_session_two/global/functions/navigate.dart';
 import 'package:state_management_session_two/modules/locations/screens/single_location_screen.dart';
 import 'package:state_management_session_two/modules/locations/view_models/locations_view_model.dart';
 import 'package:state_management_session_two/modules/locations/view_models/single_location_view_model.dart';

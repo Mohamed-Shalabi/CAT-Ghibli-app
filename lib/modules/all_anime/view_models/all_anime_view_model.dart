@@ -23,7 +23,7 @@ class AllAnimeViewModel with ChangeNotifier {
     isLoading = false;
     notifyListeners();
 
-    if (result.statusCode == 200) {
+    if (!result.isError) {
       allAnime = result.data ?? [];
       notifyListeners();
     }

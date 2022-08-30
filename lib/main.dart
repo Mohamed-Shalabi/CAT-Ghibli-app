@@ -14,9 +14,8 @@ class MyApp extends StatelessWidget {
       title: 'Anime App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: Colors.grey.shade300
-      ),
+          primarySwatch: Colors.blue,
+          scaffoldBackgroundColor: Colors.grey.shade300),
       home: const AllAnimeScreen(),
     );
   }

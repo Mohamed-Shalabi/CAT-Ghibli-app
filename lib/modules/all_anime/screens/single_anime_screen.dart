@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:state_management_session_two/global/functions/global_functions.dart';
+import 'package:state_management_session_two/global/functions/navigate.dart';
 import 'package:state_management_session_two/global/widgets/MyNetworkImage.dart';
 import 'package:state_management_session_two/global/widgets/my_divider.dart';
-import 'package:state_management_session_two/models/anime_model.dart';
 import 'package:state_management_session_two/modules/all_anime/view_models/single_anime_view_model.dart';
 import 'package:state_management_session_two/modules/all_anime/widgets/navigation_row.dart';
 import 'package:state_management_session_two/modules/locations/view_models/locations_view_model.dart';

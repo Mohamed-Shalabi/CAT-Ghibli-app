@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:state_management_session_two/global/functions/global_functions.dart';
+import 'package:state_management_session_two/global/functions/show_snack_bar.dart';
 import 'package:state_management_session_two/modules/all_anime/view_models/all_anime_view_model.dart';
 import 'package:state_management_session_two/modules/all_anime/widgets/anime_list_tile.dart';
 
@@ -15,7 +15,7 @@ class AllAnimeScreen extends StatelessWidget {
         create: (_) => AllAnimeViewModel()
           ..getAllAnime().then(
             (result) {
-              if (result.statusCode != 200) {
+              if (result.isError) {
                 showSnackBar(context, result.message);
               }
             },

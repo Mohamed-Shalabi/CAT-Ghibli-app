@@ -15,25 +15,24 @@ class SinglePersonScreen extends StatelessWidget {
         title: Text(person.name),
       ),
       body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              'ID: ${person.id}',
-            ),
-            Text(
-              'Gender: ${person.gender.name}',
-            ),
-            Text(
-              'Age: ${person.age}',
-            ),
-            Text(
-              'Hair color: ${person.hairColor}',
-            ),
-          ],
-        )
-      ),
+          child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            'ID: ${person.id}',
+          ),
+          Text(
+            'Gender: ${person.gender.name}',
+          ),
+          Text(
+            'Age: ${person.age}',
+          ),
+          Text(
+            'Hair color: ${person.hairColor}',
+          ),
+        ],
+      )),
     );
   }
 }

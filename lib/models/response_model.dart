@@ -1,21 +1,16 @@
 class ResponseModel<T> {
-  final int statusCode;
   final T? data;
   final String message;
 
-  ResponseModel({
-    required this.statusCode,
-    this.data,
-    this.message = '',
-  });
+  ResponseModel.success({required this.data}) : message = '';
 
-  ResponseModel.error()
-      : statusCode = -1,
-        message = 'An error occurred',
-        data = null;
+  ResponseModel.unknownError()
+      : data = null,
+        message = 'An error occurred';
 
   ResponseModel.networkError()
-      : statusCode = -1,
-        message = 'Check your internet connection',
-        data = null;
+      : data = null,
+        message = 'Check your internet connection';
+
+  bool get isError => data == null;
 }

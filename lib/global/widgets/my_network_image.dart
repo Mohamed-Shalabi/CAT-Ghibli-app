@@ -10,14 +10,14 @@ class MyNetworkImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return CachedNetworkImage(
       imageUrl: url,
-      errorWidget: (_, __, ___) {
-        return const Center(
-          child: Text('An error occurred'),
-        );
-      },
       placeholder: (_, __) {
         return const Center(
           child: CircularProgressIndicator(),
+        );
+      },
+      errorWidget: (_, __, ___) {
+        return const Center(
+          child: Text('An error occurred'),
         );
       },
     );

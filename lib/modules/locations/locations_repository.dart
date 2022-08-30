@@ -18,8 +18,7 @@ class LocationsRepository {
         if (data is Map<String, dynamic>) {
           final person = LocationModel.fromMap(data);
 
-          return ResponseModel(
-            statusCode: response.statusCode,
+          return ResponseModel.success(
             data: [person],
           );
         } else {
@@ -27,20 +26,19 @@ class LocationsRepository {
             data.cast<Map<String, dynamic>>(),
           );
 
-          return ResponseModel(
-            statusCode: response.statusCode,
+          return ResponseModel.success(
             data: locations,
           );
         }
       } else {
-        return ResponseModel.error();
+        return ResponseModel.unknownError();
       }
     } catch (e) {
       if (e is SocketException) {
         return ResponseModel.networkError();
       }
 
-      return ResponseModel.error();
+      return ResponseModel.unknownError();
     }
   }
 }

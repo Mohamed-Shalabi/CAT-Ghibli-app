@@ -18,29 +18,23 @@ class PeopleRepository {
         if (data is Map<String, dynamic>) {
           final person = PersonModel.fromMap(data);
 
-          return ResponseModel(
-            statusCode: response.statusCode,
-            data: [person],
-          );
+          return ResponseModel.success(data: [person]);
         } else {
           final people = PersonModel.parseList(
             data.cast<Map<String, dynamic>>(),
           );
 
-          return ResponseModel(
-            statusCode: response.statusCode,
-            data: people,
-          );
+          return ResponseModel.success(data: people);
         }
       } else {
-        return ResponseModel.error();
+        return ResponseModel.unknownError();
       }
     } catch (e) {
       if (e is SocketException) {
         return ResponseModel.networkError();
       }
 
-      return ResponseModel.error();
+      return ResponseModel.unknownError();
     }
   }
 }

@@ -5,11 +5,3 @@ void showSnackBar(BuildContext context, String message) {
     SnackBar(content: Text(message)),
   );
 }
-
-void navigateTo(BuildContext context, Widget widget) {
-  Navigator.of(context).push(
-    MaterialPageRoute(
-      builder: (context) => widget,
-    ),
-  );
-}
