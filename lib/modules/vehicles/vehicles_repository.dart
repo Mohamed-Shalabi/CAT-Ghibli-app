@@ -12,7 +12,7 @@ class VehiclesRepository {
     String url,
   ) async {
     try {
-      final response = await GlobalService.fetchDate(url);
+      final response = await GlobalService.fetchData(url);
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         if (data is Map<String, dynamic>) {
