@@ -1,4 +1,3 @@
 class LocationsRepository {
   LocationsRepository._();
-
 }
