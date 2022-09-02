@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:state_management_session_two/global/functions/navigate.dart';
-import 'package:state_management_session_two/global/widgets/my_network_image.dart';
+import 'package:state_management_session_two/global/functions/show_snack_bar.dart';
 import 'package:state_management_session_two/global/widgets/my_divider.dart';
+import 'package:state_management_session_two/global/widgets/my_network_image.dart';
 import 'package:state_management_session_two/modules/all_anime/view_models/single_anime_view_model.dart';
 import 'package:state_management_session_two/modules/all_anime/widgets/navigation_row.dart';
 import 'package:state_management_session_two/modules/locations/view_models/locations_view_model.dart';
@@ -128,7 +129,11 @@ class SingleAnimeScreen extends StatelessWidget {
                       ChangeNotifierProvider(
                         create: (_) {
                           return PeopleViewModel(peopleUrls: anime.people)
-                            ..getPeople();
+                            ..getPeople().then((value) {
+                              if (value.isError) {
+                                showSnackBar(context, value.message);
+                              }
+                            });
                         },
                         child: const PeopleScreen(),
                       ),
@@ -145,7 +150,11 @@ class SingleAnimeScreen extends StatelessWidget {
                         create: (_) {
                           return LocationsViewModel(
                             locationsUrls: anime.locations,
-                          )..getLocations();
+                          )..getLocations().then((value) {
+                              if (value.isError) {
+                                showSnackBar(context, value.message);
+                              }
+                            });
                         },
                         child: const LocationsScreen(),
                       ),
@@ -162,7 +171,11 @@ class SingleAnimeScreen extends StatelessWidget {
                         create: (_) {
                           return VehiclesViewModel(
                             vehiclesUrls: anime.vehicles,
-                          )..getVehicles();
+                          )..getVehicles().then((value) {
+                              if (value.isError) {
+                                showSnackBar(context, value.message);
+                              }
+                            });
                         },
                         child: const VehiclesScreen(),
                       ),
@@ -178,7 +191,11 @@ class SingleAnimeScreen extends StatelessWidget {
                       ChangeNotifierProvider(
                         create: (_) {
                           return SpeciesViewModel(speciesUrls: anime.species)
-                            ..getSpecies();
+                            ..getSpecies().then((value) {
+                              if (value.isError) {
+                                showSnackBar(context, value.message);
+                              }
+                            });
                         },
                         child: const SpeciesScreen(),
                       ),
