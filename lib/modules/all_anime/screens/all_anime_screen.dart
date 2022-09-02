@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:state_management_session_two/global/functions/show_snack_bar.dart';
+import 'package:state_management_session_two/global/styles/themes.dart';
 import 'package:state_management_session_two/modules/all_anime/view_models/all_anime_view_model.dart';
 import 'package:state_management_session_two/modules/all_anime/widgets/anime_list_tile.dart';
 
@@ -10,7 +11,17 @@ class AllAnimeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('All anime films')),
+      appBar: AppBar(
+        title: const Text('All anime films'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              context.read<Themes>().toggleThemeMode();
+            },
+            icon: const Icon(Icons.brightness_4),
+          ),
+        ],
+      ),
       body: ChangeNotifierProvider(
         create: (_) => AllAnimeViewModel()
           ..getAllAnime().then(
@@ -28,15 +39,21 @@ class AllAnimeScreen extends StatelessWidget {
                   child: CircularProgressIndicator(),
                 )
               : !viewModel.isConnected
-                  ? const Center(
-                      child: Text('Check your internet connection'),
+                  ? Center(
+                      child: Text(
+                        'Check your internet connection',
+                        style: context.textTheme.titleLarge,
+                      ),
                     )
                   : ListView.builder(
                       padding: const EdgeInsets.all(16),
                       itemCount: allAnime.length,
                       itemBuilder: (BuildContext context, int index) {
                         final anime = allAnime[index];
-                        return AnimeListTile(anime: anime);
+                        return Provider(
+                          create: (_) => AnimeTileViewModel(anime: anime),
+                          child: const AnimeListTile(),
+                        );
                       },
                     );
         },

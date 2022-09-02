@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:state_management_session_two/global/styles/themes.dart';
 
 class NavigationRow extends StatelessWidget {
   const NavigationRow({
@@ -23,9 +24,7 @@ class NavigationRow extends StatelessWidget {
           children: [
             Text(
               title,
-              style: const TextStyle(
-                fontSize: 20,
-              ),
+              style: context.textTheme.titleMedium,
             ),
             const Icon(Icons.arrow_forward_ios, size: 16),
           ],

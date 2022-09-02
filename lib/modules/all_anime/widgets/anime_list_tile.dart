@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:state_management_session_two/global/functions/navigate.dart';
+import 'package:state_management_session_two/global/styles/themes.dart';
 import 'package:state_management_session_two/global/widgets/my_network_image.dart';
 import 'package:state_management_session_two/global/widgets/my_divider.dart';
 import 'package:state_management_session_two/models/anime_model.dart';
@@ -10,13 +11,11 @@ import 'package:state_management_session_two/modules/all_anime/view_models/singl
 class AnimeListTile extends StatelessWidget {
   const AnimeListTile({
     Key? key,
-    required this.anime,
   }) : super(key: key);
-
-  final AnimeModel anime;
 
   @override
   Widget build(BuildContext context) {
+    final anime = context.read<AnimeTileViewModel>().anime;
     return InkWell(
       onTap: () {
         navigateTo(
@@ -29,7 +28,7 @@ class AnimeListTile extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: context.colorScheme.surface,
           borderRadius: BorderRadius.circular(8),
         ),
         margin: const EdgeInsets.symmetric(vertical: 8),
@@ -41,24 +40,38 @@ class AnimeListTile extends StatelessWidget {
             Text(
               '${anime.title}\n${anime.japaneseTitle}',
               textAlign: TextAlign.center,
-              style:
-                  const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              style: context.textTheme.titleLarge,
             ),
             const MyDivider(),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                anime.description,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.grey.shade500,
-                ),
-              ),
-            ),
+            const DescriptionText(),
           ],
         ),
       ),
     );
   }
+}
+
+class DescriptionText extends StatelessWidget {
+  const DescriptionText({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final description = context.read<AnimeTileViewModel>().anime.description;
+
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Text(
+        description,
+        textAlign: TextAlign.center,
+        style: context.textTheme.bodyMedium,
+      ),
+    );
+  }
+}
+
+
+class AnimeTileViewModel {
+  final AnimeModel anime;
+
+  AnimeTileViewModel({required this.anime});
 }

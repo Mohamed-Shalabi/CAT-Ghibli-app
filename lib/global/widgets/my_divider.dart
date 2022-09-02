@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:state_management_session_two/global/styles/themes.dart';
 
 class MyDivider extends StatelessWidget {
   const MyDivider({Key? key}) : super(key: key);
@@ -6,7 +7,7 @@ class MyDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Divider(
-      color: Colors.grey.shade300,
+      color: context.colorScheme.onSurface,
       thickness: 2,
     );
   }

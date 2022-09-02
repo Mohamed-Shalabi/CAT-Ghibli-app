@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:state_management_session_two/global/local/prefs.dart';
+import 'package:state_management_session_two/global/styles/themes.dart';
 import 'package:state_management_session_two/modules/all_anime/screens/all_anime_screen.dart';
 
-void main() {
-  runApp(const MyApp());
+// Dark Theme (Color Scheme + Text Theme)
+// Using Widgets
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Prefs.init();
+
+  runApp(ChangeNotifierProvider(create: (_) => Themes(),child: const MyApp(),),);
 }
 
 class MyApp extends StatelessWidget {
@@ -10,13 +19,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final  themes = context.watch<Themes>();
+
     return MaterialApp(
       title: 'Anime App',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: Colors.grey.shade300,
-      ),
+      themeMode: themes.isLight ? ThemeMode.light : ThemeMode.dark,
+      theme: themes.lightTheme,
+      darkTheme: themes.darkTheme,
       home: const AllAnimeScreen(),
     );
   }
